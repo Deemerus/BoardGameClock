@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:paddingTop="?attr/actionBarSize">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -40,15 +41,16 @@
         android:layout_marginStart="100dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/center_button"
         android:onClick="nextPlayer"
+        android:textColor="@color/button_text"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_activity_main"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="timeForMove" />
 
     <Button
@@ -57,9 +59,11 @@
         android:layout_height="80dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="00dp"
+        android:backgroundTint="@color/pause_button"
         android:onClick="changePause"
         android:text="@string/pause"
+        android:textColor="@color/button_text"
         app:layout_constraintBottom_toTopOf="@+id/reveal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -67,12 +71,14 @@
     <Button
         android:id="@+id/reveal"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="80dp"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="75dp"
+        android:backgroundTint="@color/pass_button"
         android:onClick="pass"
         android:text="@string/pass"
+        android:textColor="@color/button_text"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -94,7 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank1"
@@ -108,6 +114,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,6 +122,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
         app:layout_constraintStart_toEndOf="@+id/nextPlayer"
@@ -127,7 +135,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank2"
@@ -144,6 +152,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -152,6 +161,7 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/reveal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +175,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank3"
@@ -179,6 +189,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -200,7 +211,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank4"
@@ -214,6 +225,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -222,6 +234,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/reveal"
         app:layout_constraintEnd_toStartOf="@+id/nextPlayer"
         app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
@@ -234,7 +247,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank5"
@@ -249,6 +262,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -257,6 +271,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toStartOf="@+id/nextPlayer"
         app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
@@ -269,7 +284,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/timeBank6"
@@ -283,6 +298,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck"
             tools:text="timeBank6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

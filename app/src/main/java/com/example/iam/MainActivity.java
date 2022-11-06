@@ -5,13 +5,8 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.iam.classes.Player;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -96,11 +91,14 @@ public class MainActivity extends AppCompatActivity {
             TextView timeBankBackgroundDisplay = timeBankDisplayBackgrounds.get(i);
             timeBankDisplay.setText(Player.getPlayer(i).getTimeBankStr());
             if(Player.activePlayer == i) {
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.red);
+                timeBankDisplay.setTextColor(getResources().getColor(R.color.active_player_text));
+                timeBankBackgroundDisplay.setBackgroundResource(R.color.active_player);
             } else if(Player.getPlayer(i).passed) {
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.grey);
+                timeBankDisplay.setTextColor(getResources().getColor(R.color.passed_player_text));
+                timeBankBackgroundDisplay.setBackgroundResource(R.color.passed_player);
             } else {
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.white);
+                timeBankDisplay.setTextColor(getResources().getColor(R.color.idle_player_text));
+                timeBankBackgroundDisplay.setBackgroundResource(R.color.idle_player);
             }
         }
 
