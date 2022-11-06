@@ -3,6 +3,7 @@ package com.example.iam;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         isPaused = true;
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             timeBankDisplay.setText(Player.getPlayer(i).getTimeBankStr());
             if(Player.activePlayer == i) {
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.red);
-            } if(Player.getPlayer(i).passed) {
+            } else if(Player.getPlayer(i).passed) {
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.grey);
             } else {
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.white);
