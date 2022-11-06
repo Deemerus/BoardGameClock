@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.boardgameclock">
+    package="pl.boardgameclock">
 
     <application
         android:allowBackup="true"
@@ -10,12 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IAM">
         <activity
-            android:name="com.example.boardgameclock.pl.example.boardgameclock.MainActivity"
+            android:name="pl.boardgameclock.MainActivity"
             android:exported="true"
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name="com.example.boardgameclock.pl.example.boardgameclock.SettingsActivity"
+            android:name="pl.boardgameclock.SettingsActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

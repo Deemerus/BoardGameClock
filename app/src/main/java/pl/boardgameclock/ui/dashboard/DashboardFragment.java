@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.boardgameclock.databinding.FragmentDashboardBinding;
+import pl.boardgameclock.databinding.FragmentDashboardBinding;
+
 
 public class DashboardFragment extends Fragment {
 
