@@ -1,4 +1,4 @@
-package com.example.iam.classes;
+package pl.boardgameclock.classes;
 
 import java.util.ArrayList;
 

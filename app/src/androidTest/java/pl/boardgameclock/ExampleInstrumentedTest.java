@@ -1,4 +1,4 @@
-package com.example.iam;
+package pl.boardgameclock;
 
 import android.content.Context;
 

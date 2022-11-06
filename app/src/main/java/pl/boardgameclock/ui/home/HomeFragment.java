@@ -1,4 +1,4 @@
-package com.example.iam.ui.home;
+package pl.boardgameclock.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.iam.databinding.FragmentHomeBinding;
+import com.example.boardgameclock.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 

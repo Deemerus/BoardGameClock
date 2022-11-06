@@ -1,4 +1,4 @@
-package com.example.iam;
+package pl.boardgameclock;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.iam.classes.Player;
+import pl.boardgameclock.classes.Player;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
