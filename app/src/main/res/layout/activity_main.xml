@@ -5,93 +5,71 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:paddingTop="?attr/actionBarSize">
+    android:background="@color/background">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_fragment_activity_main"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/mobile_navigation" />
-
-    <Button
-        android:id="@+id/nextPlayer"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/centerBody"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginEnd="100dp"
-        android:backgroundTint="@color/center_button"
-        android:onClick="nextPlayer"
-        android:textColor="@color/button_text"
-        android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/pause"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_activity_main"
-        app:layout_constraintVertical_bias="0.0"
-        tools:text="timeForMove" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout4"
+        app:layout_constraintEnd_toStartOf="@id/constraintLayout2"
+        app:layout_constraintStart_toEndOf="@id/constraintLayout6"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout1">
 
-    <Button
-        android:id="@+id/pause"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="00dp"
-        android:backgroundTint="@color/pause_button"
-        android:onClick="changePause"
-        android:text="@string/pause"
-        android:textColor="@color/button_text"
-        app:layout_constraintBottom_toTopOf="@+id/reveal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/nextPlayer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="@color/center_button"
+            android:onClick="nextPlayer"
+            android:textColor="@color/button_text"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toTopOf="@id/pause"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="timeForMove" />
 
-    <Button
-        android:id="@+id/reveal"
-        android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="75dp"
-        android:backgroundTint="@color/pass_button"
-        android:onClick="pass"
-        android:text="@string/pass"
-        android:textColor="@color/button_text"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/pause_button"
+            android:onClick="changePause"
+            android:text="@string/pause"
+            android:textColor="@color/button_text"
+            app:layout_constraintBottom_toTopOf="@id/reveal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nextPlayer" />
+
+        <Button
+            android:id="@+id/reveal"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:backgroundTint="@color/pass_button"
+            android:onClick="pass"
+            android:text="@string/pass"
+            android:textColor="@color/button_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pause" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout1"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/nextPlayer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/nav_host_fragment_activity_main">
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/centerBody"
+        app:layout_constraintEnd_toStartOf="@id/constraintLayout2"
+        app:layout_constraintStart_toEndOf="@id/constraintLayout6"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/timeBankBackground1"
@@ -120,13 +98,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
-        app:layout_constraintStart_toEndOf="@+id/nextPlayer"
-        app:layout_constraintTop_toTopOf="@+id/nextPlayer">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/centerBody"
+        app:layout_constraintTop_toTopOf="@+id/centerBody">
 
         <TextView
             android:id="@+id/timeBankBackground2"
@@ -141,7 +118,6 @@
             android:id="@+id/timeBank2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:includeFontPadding="true"
             android:maxLines="1"
@@ -161,11 +137,10 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/reveal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nextPlayer"
+        app:layout_constraintBottom_toBottomOf="@+id/centerBody"
+        app:layout_constraintEnd_toEndOf="@id/constraintLayout2"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <TextView
@@ -197,12 +172,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reveal">
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/constraintLayout3"
+        app:layout_constraintStart_toEndOf="@id/constraintLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/centerBody">
 
         <TextView
             android:id="@+id/timeBankBackground4"
@@ -217,8 +191,6 @@
             android:id="@+id/timeBank4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="100dp"
             android:gravity="center"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -234,10 +206,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/reveal"
-        app:layout_constraintEnd_toStartOf="@+id/nextPlayer"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
+        app:layout_constraintBottom_toBottomOf="@+id/centerBody"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout6"
+        app:layout_constraintStart_toStartOf="@id/constraintLayout6"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6">
 
         <TextView
@@ -253,7 +224,6 @@
             android:id="@+id/timeBank5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:maxLines="1"
             android:rotation="90"
@@ -268,14 +238,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
-        android:layout_width="0dp"
+        android:layout_width="100dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-        app:layout_constraintEnd_toStartOf="@+id/nextPlayer"
-        app:layout_constraintStart_toStartOf="@+id/nav_host_fragment_activity_main"
-        app:layout_constraintTop_toTopOf="@+id/nextPlayer">
+        app:layout_constraintEnd_toStartOf="@+id/centerBody"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/centerBody">
 
         <TextView
             android:id="@+id/timeBankBackground6"
