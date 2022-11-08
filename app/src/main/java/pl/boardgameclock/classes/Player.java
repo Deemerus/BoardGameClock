@@ -93,4 +93,10 @@ public class Player {
         }
     }
 
+    public static void reset() {
+        players = new ArrayList<>();
+        activePlayer = 0;
+        timeForMove = 0;
+    }
+
 }

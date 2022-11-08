@@ -1,5 +1,9 @@
 package pl.boardgameclock;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -130,6 +134,20 @@ public class MainActivity extends AppCompatActivity {
     public void pass(View view) {
         Player.passActivePlayer();
         nextPlayer(view);
+    }
+
+    public void restart(View view) {
+        Context context = this;
+        new AlertDialog.Builder(this)
+                .setMessage(R.string.restartConfirmation)
+                .setPositiveButton(R.string.restartConfirmationYes, (dialogInterface, i) -> {
+                    if(cTimer != null){
+                        cTimer.cancel();
+                    }
+                    Player.reset();
+                    startActivity(new Intent(context, SettingsActivity.class));
+                })
+                .setNegativeButton(R.string.restartConfirmationNo, null).show();
     }
 
 }

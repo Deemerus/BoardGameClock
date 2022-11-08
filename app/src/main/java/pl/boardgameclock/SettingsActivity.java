@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         if(player6) playerCount++;
 
         if(playerCount < 2) {
-            Toast toast = Toast.makeText(getApplicationContext(), R.string.notEnoughPlayersError, Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, R.string.notEnoughPlayersError, Toast.LENGTH_LONG);
             toast.show();
         } else {
             long timeBank;
