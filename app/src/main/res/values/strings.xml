@@ -8,4 +8,5 @@
     <string name="submit">Submit</string>
     <string name="timeBankSelectionHint">Time bank in minutes</string>
     <string name="timePerMoveSelectionHint">Time per move in seconds</string>
+    <string name="notEnoughPlayersError">Choose at least 2 players</string>
 </resources>
