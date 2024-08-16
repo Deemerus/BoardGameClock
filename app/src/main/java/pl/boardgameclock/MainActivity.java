@@ -2,7 +2,6 @@ package pl.boardgameclock;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -10,12 +9,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import pl.boardgameclock.classes.Player;
+import pl.boardgameclock.classes.BoardState;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private long timeForMove;
+    private BoardState boardState;
 
     ArrayList<TextView> timeBankDisplays;
     ArrayList<TextView> timeBankDisplayBackgrounds;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null){
             this.getSupportActionBar().hide();
         }
+        boardState = BoardState.getInstance();
+        boardState.initializePlayers();
 
         isPaused = true;
 
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         timeBankDisplayBackgrounds.add(findViewById(R.id.timeBankBackground6));
         //add
 
-        timeForMove = Player.timeForMove;
+        timeForMove = boardState.getTimeForMove();
         timeForMoveDisplay = findViewById(R.id.nextPlayer);
         timeForMoveDisplay.setText(String.valueOf(timeForMove));
 
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     if(timeForMove>0){
                         timeForMove--;
                     } else {
-                        Player.dropSecondActivePlayer();
+                        boardState.dropSecondActivePlayer();
                     }
                 }
                 refreshTextViews();
@@ -97,15 +100,15 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i<6; i++){
             TextView timeBankDisplay = timeBankDisplays.get(i);
             TextView timeBankBackgroundDisplay = timeBankDisplayBackgrounds.get(i);
-            timeBankDisplay.setText(Player.getPlayer(i).getTimeBankStr());
-            if(Player.activePlayer == i) {
-                timeBankDisplay.setTextColor(getResources().getColor(R.color.active_player_text));
+            timeBankDisplay.setText(boardState.getPlayer(i).getTimeBankStr());
+            if(boardState.getActivePlayer() == i) {
+                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.active_player_text));
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.active_player);
-            } else if(Player.getPlayer(i).passed) {
-                timeBankDisplay.setTextColor(getResources().getColor(R.color.passed_player_text));
+            } else if(boardState.getPlayer(i).isPassed()) {
+                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.passed_player_text));
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.passed_player);
             } else {
-                timeBankDisplay.setTextColor(getResources().getColor(R.color.idle_player_text));
+                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.idle_player_text));
                 timeBankBackgroundDisplay.setBackgroundResource(R.color.idle_player);
             }
         }
@@ -115,16 +118,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void nextPlayer(View view) {
-        isPaused = !Player.nextPlayer();
+        isPaused = !boardState.nextPlayer();
         if(isPaused) {
-            Player.resetPassed();
+            boardState.resetPassed();
         }
         resetTimeForMove();
         refreshTextViews();
     }
 
     private void resetTimeForMove() {
-        timeForMove = Player.timeForMove;
+        timeForMove = boardState.getTimeForMove();
     }
 
     public void changePause(View view) {
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pass(View view) {
-        Player.passActivePlayer();
+        boardState.passActivePlayer();
         nextPlayer(view);
     }
 
@@ -144,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                     if(cTimer != null){
                         cTimer.cancel();
                     }
-                    Player.reset();
+                    boardState.reset();
                     startActivity(new Intent(context, SettingsActivity.class));
                 })
                 .setNegativeButton(R.string.restartConfirmationNo, null).show();

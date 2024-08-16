@@ -1,64 +1,30 @@
 package pl.boardgameclock.classes;
 
-import java.util.ArrayList;
-
 public class Player {
+    private long timeBank;
+    private boolean passed = false;
+    private boolean inPlay = true;
 
-    public static ArrayList<Player> players = new ArrayList<>();
-    public static int activePlayer = 0;
-    public static long timeForMove;
-
-    public long timeBank;
-    public boolean passed = false;
-    public boolean inPlay = true;
-
-    public Player () {
+    public boolean isPassed() {
+        return passed;
     }
 
-    public static void createPlayers() {
-        players.add(new Player());
-        players.add(new Player());
-        players.add(new Player());
-        players.add(new Player());
-        players.add(new Player());
-        players.add(new Player());
+    public void setPassed(boolean passed) {
+        this.passed = passed;
     }
 
-    public static void setTimeBanks(long timeBank) {
-        for(Player player : players) {
-            player.timeBank = timeBank;
-        }
+    public boolean isInPlay() {
+        return inPlay;
     }
 
-    public static Player getPlayer(int id){
-        return players.get(id);
+    public void setInPlay(boolean inPlay) {
+        this.inPlay = inPlay;
     }
 
-    public static void dropSecondActivePlayer() {
-        players.get(activePlayer).dropSecond();
-    }
+    public Player () {}
 
-    public static void passActivePlayer() {
-        players.get(activePlayer).passed = true;
-    }
-
-    public static boolean nextPlayer(){
-        for(int i=0;i<6;i++){
-            activePlayer++;
-            if(activePlayer>5){
-                activePlayer=0;
-            }
-            if(players.get(activePlayer).inPlay && !players.get(activePlayer).passed){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public static void resetPassed() {
-        for(int i=0;i<6;i++){
-            players.get(i).passed = false;
-        }
+    public void setTimeBank(long timeBank) {
+        this.timeBank = timeBank;
     }
 
     public void dropSecond() {
@@ -82,21 +48,6 @@ public class Player {
             formatted = formatted + "0";
         }
         return formatted + seconds;
-    }
-
-    public static void initiateFirstActivePlayer() {
-        for(int i = 0; i<6;i++) {
-            if(players.get(i).inPlay) {
-                activePlayer = i;
-                return;
-            }
-        }
-    }
-
-    public static void reset() {
-        players = new ArrayList<>();
-        activePlayer = 0;
-        timeForMove = 0;
     }
 
 }
