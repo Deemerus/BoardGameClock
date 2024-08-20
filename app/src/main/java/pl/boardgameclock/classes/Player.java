@@ -1,9 +1,14 @@
 package pl.boardgameclock.classes;
 
+import android.graphics.Color;
+
 public class Player {
     private long timeBank;
     private boolean passed = false;
-    private boolean inPlay = true;
+    private boolean inPlay = false;
+    private int color = Color.WHITE;
+
+    public Player () {}
 
     public boolean isPassed() {
         return passed;
@@ -21,10 +26,16 @@ public class Player {
         this.inPlay = inPlay;
     }
 
-    public Player () {}
-
     public void setTimeBank(long timeBank) {
         this.timeBank = timeBank;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public void dropSecond() {
