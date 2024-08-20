@@ -5,7 +5,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="pause">Pause</string>
     <string name="pass">Pass</string>
-    <string name="submit">Submit</string>
+    <string name="submit">3. Submit</string>
     <string name="timeBankSelectionHint">Time bank</string>
     <string name="timePerMoveSelectionHint">Time per move</string>
     <string name="notEnoughPlayersError">Choose at least 2 players</string>
@@ -16,7 +16,9 @@
     <string name="addPlayer">Add player</string>
     <string name="removePlayer">Remove player</string>
     <string name="gameSetup">Set-Up your game</string>
-    <string name="tickPlayers">Tick places corresponding to players</string>
+    <string name="tickPlayers">1. Tick selected Players</string>
+    <string name="settingsLabel">2. Modify settings</string>
+    <string name="customColors">Custom Player Colors</string>
     <string name="timeBankDescription">Set time bank (in minutes)</string>
     <string name="timePerMoveDescription">Set time per move (in seconds)</string>
 

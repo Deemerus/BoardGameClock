@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import pl.boardgameclock.classes.BoardState;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
     private long timeForMove;
@@ -97,24 +98,68 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshTextViews() {
         timeForMoveDisplay.setText(String.valueOf(timeForMove));
-        for(int i = 0; i<6; i++){
-            TextView timeBankDisplay = timeBankDisplays.get(i);
-            TextView timeBankBackgroundDisplay = timeBankDisplayBackgrounds.get(i);
-            timeBankDisplay.setText(boardState.getPlayer(i).getTimeBankStr());
-            if(boardState.getActivePlayer() == i) {
-                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.active_player_text));
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.active_player);
-            } else if(boardState.getPlayer(i).isPassed()) {
-                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.passed_player_text));
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.passed_player);
+        for (int i = 0; i < 6; i++) {
+            refreshTextView(i);
+        }
+        if(boardState.isCustomColors()){
+            int playerColor = boardState.getActivePlayer().getColor();
+            timeForMoveDisplay.setBackgroundColor(playerColor);
+            int textColor = getColorFromContext(R.color.lightBgTextColor);
+            boolean isBackgroundDark = IntStream.of(getResources().getIntArray(R.array.playerColors_dark))
+                    .anyMatch(x -> x == playerColor);
+            if (isBackgroundDark) {
+                textColor = getColorFromContext(R.color.darkBgTextColor);
+            }
+            timeForMoveDisplay.setTextColor(textColor);
+        }
+    }
+
+    private void refreshTextView(int playerId) {
+        TextView timeBankDisplay = timeBankDisplays.get(playerId);
+        TextView timeBankBackgroundDisplay = timeBankDisplayBackgrounds.get(playerId);
+        timeBankDisplay.setText(boardState.getPlayer(playerId).getTimeBankStr());
+
+        int textColor;
+        int bgColor;
+        if(boardState.isCustomColors()){
+            if (!boardState.getPlayer(playerId).isInPlay()) {
+                return;
+            }
+            int playerColor = boardState.getPlayer(playerId).getColor();
+            bgColor = playerColor;
+            textColor = getColorFromContext(R.color.lightBgTextColor);
+            boolean isBackgroundDark = IntStream.of(getResources().getIntArray(R.array.playerColors_dark))
+                    .anyMatch(x -> x == playerColor);
+            if (isBackgroundDark) {
+                textColor = getColorFromContext(R.color.darkBgTextColor);
+            }
+            if (boardState.getPlayer(playerId).isPassed()) {
+                bgColor = getColorFromContext(R.color.passed_player);
+            }
+        } else {
+            // Default color functionality
+            if (boardState.getActivePlayerId() == playerId) {
+                textColor = getColorFromContext(R.color.active_player_text);
+                bgColor = getColorFromContext(R.color.active_player);
+            } else if (boardState.getPlayer(playerId).isPassed()) {
+                textColor = getColorFromContext(R.color.passed_player_text);
+                bgColor = getColorFromContext(R.color.passed_player);
             } else {
-                timeBankDisplay.setTextColor(ContextCompat.getColor(this, R.color.idle_player_text));
-                timeBankBackgroundDisplay.setBackgroundResource(R.color.idle_player);
+                textColor = getColorFromContext(R.color.idle_player_text);
+                bgColor = getColorFromContext(R.color.idle_player);
             }
         }
-
+        timeBankDisplay.setTextColor(textColor);
+        timeBankBackgroundDisplay.setBackgroundColor(bgColor);
 
     }
+
+    private int getColorFromContext(int colorId) {
+        return ContextCompat.getColor(this, colorId);
+    }
+
+
+
 
 
     public void nextPlayer(View view) {

@@ -1,17 +1,21 @@
 package pl.boardgameclock.classes;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class BoardState {
     private static final BoardState instance = new BoardState();
     private List<Player> players;
-    private int activePlayer;
+    private int activePlayerId;
     private long timeForMove;
+    private boolean customColors = false;
 
-    public int getActivePlayer() {
-        return activePlayer;
+    public int getActivePlayerId() {
+        return activePlayerId;
+    }
+
+    public Player getActivePlayer() {
+        return players.get(this.activePlayerId);
     }
 
     public long getTimeForMove() {
@@ -49,25 +53,33 @@ public class BoardState {
         }
     }
 
+    public boolean isCustomColors() {
+        return customColors;
+    }
+
+    public void setCustomColors(boolean customColors) {
+        this.customColors = customColors;
+    }
+
     public Player getPlayer(int id){
         return players.get(id);
     }
 
     public void dropSecondActivePlayer() {
-        players.get(activePlayer).dropSecond();
+        players.get(activePlayerId).dropSecond();
     }
 
     public void passActivePlayer() {
-        players.get(activePlayer).setPassed(true);
+        players.get(activePlayerId).setPassed(true);
     }
 
     public boolean nextPlayer(){
         for(int i=0;i<6;i++){
-            activePlayer++;
-            if(activePlayer>5){
-                activePlayer=0;
+            activePlayerId++;
+            if(activePlayerId >5){
+                activePlayerId =0;
             }
-            if(players.get(activePlayer).isInPlay() && !players.get(activePlayer).isPassed()){
+            if(players.get(activePlayerId).isInPlay() && !players.get(activePlayerId).isPassed()){
                 return true;
             }
         }
@@ -83,16 +95,18 @@ public class BoardState {
     public void initiateFirstActivePlayer() {
         for(int i = 0; i<6;i++) {
             if(players.get(i).isInPlay()) {
-                activePlayer = i;
+                activePlayerId = i;
                 return;
             }
         }
     }
 
     public void reset() {
-        players = new ArrayList<>();
-        activePlayer = 0;
+        players = null;
+        initializePlayers();
+        activePlayerId = 0;
         timeForMove = 0;
+        customColors = false;
     }
 
     public void setTimeBankForAllPlayers(long timeBank) {
