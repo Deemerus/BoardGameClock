@@ -9,6 +9,15 @@ public class BoardState {
     private int activePlayerId;
     private long timeForMove;
     private boolean customColors = false;
+    private boolean customTimeBank = false;
+
+    public boolean isCustomTimeBank() {
+        return customTimeBank;
+    }
+
+    public void setCustomTimeBank(boolean customTimeBank) {
+        this.customTimeBank = customTimeBank;
+    }
 
     public int getActivePlayerId() {
         return activePlayerId;

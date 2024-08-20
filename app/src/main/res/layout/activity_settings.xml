@@ -73,10 +73,26 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintBottom_toTopOf="@+id/customTimeBank"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/settingsLabel"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <CheckBox
+            android:id="@+id/customTimeBank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/button_text"
+            android:onClick="onChangeCustomTimePerPlayer"
+            android:text="@string/customTimePerPlayer"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customColors"
             tools:ignore="DuplicateSpeakableTextCheck" />
 
         <TextView
@@ -89,7 +105,7 @@
             app:layout_constraintBottom_toTopOf="@+id/timeBank"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/customColors" />
+            app:layout_constraintTop_toBottomOf="@+id/customTimeBank" />
 
         <EditText
             android:id="@+id/timeBank"
@@ -292,5 +308,77 @@
         app:layout_constraintBottom_toTopOf="@+id/checkBox6"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/centerBody" />
+
+    <EditText
+        android:id="@+id/customTimeBank1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/centerBody"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/customTimeBank2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+        app:layout_constraintStart_toEndOf="@+id/centerBody"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/customTimeBank3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3"
+        app:layout_constraintStart_toEndOf="@+id/centerBody"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/customTimeBank4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/centerBody"
+        app:layout_constraintEnd_toStartOf="@+id/checkBox4"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <EditText
+        android:id="@+id/customTimeBank5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox5"
+        app:layout_constraintEnd_toStartOf="@+id/centerBody"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/customTimeBank6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="64sp"
+        android:ems="10"
+        android:gravity="center"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox6"
+        app:layout_constraintEnd_toStartOf="@+id/centerBody"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
