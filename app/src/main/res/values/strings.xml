@@ -19,6 +19,7 @@
     <string name="tickPlayers">1. Tick selected Players</string>
     <string name="settingsLabel">2. Modify settings</string>
     <string name="customColors">Custom Player Colors</string>
+    <string name="customTimePerPlayer">Time Per Player</string>
     <string name="timeBankDescription">Set time bank (in minutes)</string>
     <string name="timePerMoveDescription">Set time per move (in seconds)</string>
 

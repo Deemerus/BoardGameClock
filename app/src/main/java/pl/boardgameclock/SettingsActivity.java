@@ -28,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
     private BoardState boardState;
     private List<Button> colorButtons;
     private List<CheckBox> isInPlayCheckBoxes;
+    private List<EditText> customTimeBankViews;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,17 @@ public class SettingsActivity extends AppCompatActivity {
         colorButtons.add(findViewById(R.id.color4));
         colorButtons.add(findViewById(R.id.color5));
         colorButtons.add(findViewById(R.id.color6));
+
+        customTimeBankViews = new LinkedList<>();
+        customTimeBankViews.add((findViewById(R.id.customTimeBank1)));
+        customTimeBankViews.add((findViewById(R.id.customTimeBank2)));
+        customTimeBankViews.add((findViewById(R.id.customTimeBank3)));
+        customTimeBankViews.add((findViewById(R.id.customTimeBank4)));
+        customTimeBankViews.add((findViewById(R.id.customTimeBank5)));
+        customTimeBankViews.add((findViewById(R.id.customTimeBank6)));
+
         setColorButtonsVisibility();
+        setCustomTimeBankViewsVisibility();
         setButtonColors();
     }
 
@@ -92,6 +103,20 @@ public class SettingsActivity extends AppCompatActivity {
         colorButtons.get(playerId).setVisibility(visibility);
     }
 
+    private void setCustomTimeBankViewsVisibility() {
+        for(int playerId=0; playerId<=5; playerId++) {
+            setCustomTimeBankViewVisibility(playerId, boardState.isCustomTimeBank());
+        }
+    }
+
+    private void setCustomTimeBankViewVisibility(int playerId, boolean visible) {
+        int visibility = View.INVISIBLE;
+        if(visible && boardState.getPlayer(playerId).isInPlay()){
+            visibility = View.VISIBLE;
+        }
+        customTimeBankViews.get(playerId).setVisibility(visibility);
+    }
+
     private void setPlayersInPlay() {
         for(int playerId=0; playerId<=5; playerId++) {
             boardState.getPlayer(playerId).setInPlay(isInPlayCheckBoxes.get(playerId).isChecked());
@@ -118,9 +143,23 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
             boardState.setTimeBankForAllPlayers(timeBank*60);
+            setCustomTimeBank();
             boardState.setTimeForMove(timePerMove);
             boardState.initiateFirstActivePlayer();
             startActivity(new Intent(this, MainActivity.class));
+        }
+    }
+
+    private void setCustomTimeBank() {
+        if(boardState.isCustomTimeBank()) {
+            for(int playerId = 0; playerId<=5; playerId++) {
+                try{
+                    long timePerMove = Long.parseLong(customTimeBankViews.get(playerId).getText().toString());
+                    boardState.getPlayer(playerId).setTimeBank(timePerMove*60);
+                } catch(NumberFormatException e) {
+                    //do nothing, default value will remain
+                }
+            }
         }
     }
 
@@ -130,9 +169,16 @@ public class SettingsActivity extends AppCompatActivity {
         setColorButtonsVisibility();
     }
 
+    public void onChangeCustomTimePerPlayer(View view) {
+        boolean customTimePerPlayerSetting = ((CheckBox)findViewById(R.id.customTimeBank)).isChecked();
+        boardState.setCustomTimeBank(customTimePerPlayerSetting);
+        setCustomTimeBankViewsVisibility();
+    }
+
     public void onChangePlayerActive(View view) {
         setPlayersInPlay();
         setColorButtonsVisibility();
+        setCustomTimeBankViewsVisibility();
     }
 
     public void onSelectColoPlayer1(View view) {
