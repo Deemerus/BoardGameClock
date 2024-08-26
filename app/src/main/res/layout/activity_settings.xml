@@ -316,7 +316,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/centerBody"
         app:layout_constraintEnd_toStartOf="@+id/checkBox1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -328,7 +328,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/checkBox2"
         app:layout_constraintStart_toEndOf="@+id/centerBody"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -340,7 +340,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/checkBox3"
         app:layout_constraintStart_toEndOf="@+id/centerBody"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -352,7 +352,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/centerBody"
         app:layout_constraintEnd_toStartOf="@+id/checkBox4"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -364,7 +364,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/checkBox5"
         app:layout_constraintEnd_toStartOf="@+id/centerBody"
         app:layout_constraintStart_toStartOf="parent" />
@@ -376,7 +376,7 @@
         android:width="64sp"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/checkBox6"
         app:layout_constraintEnd_toStartOf="@+id/centerBody"
         app:layout_constraintStart_toStartOf="parent" />
